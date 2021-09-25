@@ -90,4 +90,5 @@ sw.*
 *.swp
 
 yarn.lock
+package-lock.json
 _sources
