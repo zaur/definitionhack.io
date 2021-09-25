@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Home",
+    "slug": "index",
+    "description": null,
+    "contentTitle": "The Homepage",
+    "content": null,
+    "poster": null
+  },
+  {
+    "id": 2,
+    "title": "About",
+    "slug": "about",
+    "description": null,
+    "contentTitle": "About Us Page",
+    "content": null,
+    "poster": null
+  },
+  {
+    "id": 3,
+    "title": "App",
+    "slug": "app",
+    "description": null,
+    "contentTitle": "App page",
+    "content": null,
+    "poster": null
+  },
+  {
+    "id": 4,
+    "title": "Contact",
+    "slug": "contact",
+    "description": null,
+    "contentTitle": "Contact Us Page",
+    "content": null,
+    "poster": null
+  },
+  {
+    "id": 8,
+    "title": "Our Team",
+    "slug": "team",
+    "description": null,
+    "contentTitle": "Our Team Page",
+    "content": null,
+    "poster": null
+  }
+]

@@ -1,6 +1,6 @@
 <template>
   <div v-if='content' class="contact">
-    <Logo :brand-color='logoColor' :text-color='logoColor' />
+    <Logo />
 
     <div v-if='content.content' class='text' v-html='$md.render(content.content)' />
 

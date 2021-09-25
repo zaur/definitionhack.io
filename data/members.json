@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Zaur Agamov",
+    "position": "Coder",
+    "location": "Makhachkala, Russia",
+    "photo": ""
+  },
+  {
+    "id": 2,
+    "name": "Maxim Sultakov",
+    "position": "Coder",
+    "location": "St. Petersburg, Russia",
+    "photo": ""
+  },
+  {
+    "id": 3,
+    "name": "Ilya Belkin",
+    "position": "Coder",
+    "location": "St. Petersburg, Russia",
+    "photo": ""
+  },
+  {
+    "id": 3,
+    "name": "Alexey Kalmykov",
+    "position": "Coder",
+    "location": "St. Petersburg, Russia",
+    "photo": ""
+  },
+  {
+    "id": 3,
+    "name": "Karim Karimov",
+    "position": "Coder",
+    "location": "Denver, USA",
+    "photo": ""
+  },
+  {
+    "id": 3,
+    "name": "Sergey Eroshenkov",
+    "position": "FrontEnd Developer",
+    "location": "Smolensk, Russia",
+    "photo": ""
+  }
+]
