@@ -1,0 +1,81 @@
+.h-container {
+  flex: 1;
+  padding: 0 var(--gap);
+  margin: 0 auto;
+
+  @include display(desktop) {
+    max-width: var(--container-size);
+  }
+}
+
+.h-section {
+  padding: 50px 0;
+
+  &:first-child {
+    padding-top: calc(var(--header-size) + 50px);
+  }
+
+  &--accent {
+    background: clr(accent);
+  }
+
+  @include display-less(desktop) {
+    margin: 32px auto 64px;
+  }
+
+  @include display-less(smart) {
+    margin: 32px auto 40px;
+  }
+}
+
+.h-link {
+  color: clr(blue-70);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+$textColors: ("primary", "secondary", "hint", "error", "warning", "danger", "success");
+
+@each $key in $textColors {
+  .h-text-#{$key} {
+    color: clr($key);
+  }
+}
+
+.h-text-default {
+  color: clr(text);
+}
+
+%h-numeric-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: section;
+
+  li {
+    position: relative;
+    padding: 0 0 0 64px;
+
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+
+    &::before {
+      counter-increment: section;
+      content: counters(section,".") " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: clr(secondary);
+    }
+  }
+}

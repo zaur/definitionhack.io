@@ -1,0 +1,131 @@
+@import './functions';
+@import './mixins';
+@import './fonts';
+
+:root {
+  @include colors;
+
+  --gap: 16px;
+  --gap-half: 8px;
+  --gap-big: 24px;
+  --gap-double: 32px;
+  --gap-triple: 48px;
+  --gap-max: 52px;
+  --container-size: 1170px;
+  --header-size: calc(42px + var(--gap) * 4);
+  --header-size-collapsed: calc(42px + var(--gap) * 2);
+  --font-size-base: 18px;
+  --font-size-small: 16px;
+  --font-size-tiny: 14px;
+  --font-size-big: 24px;
+  --font-size-title: 40px;
+  --font-size-large: 64px;
+
+  @include display-less(desktop) {
+    --header-size: calc(42px + var(--gap));
+    --header-size-collapsed: calc(42px + var(--gap));
+    --font-size-base: 14px;
+    --font-size-small: 13px;
+    --font-size-tiny: 12px;
+    --font-size-big: 18px;
+    --font-size-bigger: 20px;
+    --font-size-title: 26px;
+    --font-size-large: 40px;
+    --font-size-max: 48px;
+  }
+
+  @include display-less(smart) {
+    --font-size-title: 24px;
+    --font-size-large: 28px;
+    --font-size-max: 32px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 1.78;
+  background: clr(light);
+  color: clr(text);
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-nav-open,
+.page-popup-open {
+  overflow: hidden;
+}
+
+h1 {
+  font-size: var(--font-size-title);
+  font-weight: 800;
+  line-height: 1.45;
+
+  @include display-less(desktop) {
+    font-size: 34px;
+  }
+
+  @include display-less(smart) {
+    font-size: 24px;
+  }
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.418;
+
+  @include display-less(desktop) {
+    font-size: 28px;
+  }
+
+  @include display-less(smart) {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  margin: 20px 0;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+p {
+  margin: 20px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}

@@ -2,7 +2,7 @@
   <main>
     <div class='h-section'>
       <div class='h-container'>
-        the homepage
+        the team page
       </div>
     </div>
   </main>
