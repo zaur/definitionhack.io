@@ -77,7 +77,7 @@ export default {
             return {
               ...link,
               label: link.label,
-              active: this.$route.name.startsWith(link.to.name)
+              active: this.$route.name?.startsWith(link.to.name)
             }
           }).filter(Boolean),
           legend: menu.legend,
