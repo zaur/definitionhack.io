@@ -1,4 +1,8 @@
 export default {
+  server: {
+    port: 5600
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ceramify-frontend',
