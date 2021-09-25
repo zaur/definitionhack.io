@@ -2,43 +2,43 @@
   {
     "id": 1,
     "name": "Zaur Agamov",
-    "position": "Coder",
+    "position": "Python Developer",
     "location": "Makhachkala, Russia",
-    "photo": ""
+    "photo": "/uploads/zaur.jpg"
   },
   {
     "id": 2,
     "name": "Maxim Sultakov",
-    "position": "Coder",
+    "position": "Android Developer",
     "location": "St. Petersburg, Russia",
-    "photo": ""
+    "photo": "/uploads/maxim.jpg"
   },
   {
     "id": 3,
     "name": "Ilya Belkin",
-    "position": "Coder",
+    "position": "Android Developer",
     "location": "St. Petersburg, Russia",
-    "photo": ""
+    "photo": "/uploads/ilya.jpg"
   },
   {
     "id": 3,
     "name": "Alexey Kalmykov",
-    "position": "Coder",
+    "position": "Software developer",
     "location": "St. Petersburg, Russia",
-    "photo": ""
+    "photo": "/uploads/alexey.jpg"
   },
   {
     "id": 3,
     "name": "Karim Karimov",
-    "position": "Coder",
+    "position": "Machine Learning Architect",
     "location": "Denver, USA",
-    "photo": ""
+    "photo": "/uploads/karim.jpg"
   },
   {
     "id": 3,
     "name": "Sergey Eroshenkov",
     "position": "FrontEnd Developer",
     "location": "Smolensk, Russia",
-    "photo": ""
+    "photo": "/uploads/sergey.jpg"
   }
 ]

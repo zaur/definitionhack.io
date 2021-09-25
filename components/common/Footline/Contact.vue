@@ -56,14 +56,7 @@ export default {
 }
 
 .logo {
-  display: inline-block;
   margin: 0 0 var(--gap-double);
-
-  img {
-    width: 160px;
-    height: 35px;
-    vertical-align: bottom;
-  }
 }
 
 .text {

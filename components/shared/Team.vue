@@ -7,8 +7,8 @@
       >
         <div slot='media' class='photo'>
           <img
-            v-if='member.photo && member.photo.url'
-            :src='null'
+            v-if='member.photo'
+            :src='member.photo'
             :alt='member.name'
           >
         </div>
@@ -42,6 +42,15 @@ ul {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
+
+  @include display-less(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @include display-less(smart) {
+    grid-template-columns: 1fr;
+  }
 }
 
 li {
