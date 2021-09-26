@@ -89,7 +89,7 @@ export default {
 
     async getStreamDoc () {
       const tileDocument = await TileDocument.create(window.ceramic, null, {
-        controllers: [window.did],
+        controllers: [window.did._id],
         family: 'ceramify-nft-1',
         tags: ['ceramify-nft-1'],
         deterministic: true,
