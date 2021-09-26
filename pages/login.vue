@@ -42,11 +42,8 @@
 </template>
 
 <script>
-// const tile = await TileDocument.create(ceramic, {foo: 'NFT888'}, {controllers: ['did:3:kjzl6cwe1jw14b09psi5i38d8scg2yw5lmgpk7eaobbjuzc2nclt1fcjhp6ikfv']})
-// tile.content
-// window.did
-
 import { mapActions, mapState } from 'vuex'
+import { TileDocument } from '@ceramicnetwork/stream-tile'
 
 export default {
   name: 'LoginPage',
@@ -77,17 +74,30 @@ export default {
       if (this.isLoggedIn) {
         return
       }
-      setTimeout(() => {
+      setTimeout(async () => {
         const text = window.did
         if (text) {
           this.login()
           this.askingAuth = false
-          this.$router.push({ name: 'app' })
+          await this.getStreamDoc()
+          await this.$router.push({ name: 'app' })
           return
         }
         this.checkAuth()
       }, 300)
     },
+
+    async getStreamDoc () {
+      const tileDocument = await TileDocument.create(window.ceramic, null, {
+        controllers: [window.did],
+        family: 'ceramify-nft-1',
+        tags: ['ceramify-nft-1'],
+        deterministic: true,
+      });
+      window.userStreamDoc = tileDocument;
+      console.log('DID:', window.did)
+      return tileDocument.stream
+    }
   },
 }
 </script>

@@ -42,8 +42,8 @@ const actions = {
 
   login ({ commit }) {
     commit('setLogin', true)
-    const localStorage = window.localStorage
-    localStorage.setItem('isLoggedIn', 'true');
+    // const localStorage = window.localStorage
+    // localStorage.setItem('isLoggedIn', 'true');
   },
 
   logout ({ commit }) {
