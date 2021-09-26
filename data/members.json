@@ -21,21 +21,21 @@
     "photo": "/uploads/ilya.jpg"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Alexey Kalmykov",
     "position": "Software developer",
     "location": "St. Petersburg, Russia",
     "photo": "/uploads/alexey.jpg"
   },
   {
-    "id": 3,
+    "id": 5,
     "name": "Karim Karimov",
     "position": "Machine Learning Architect",
     "location": "Denver, USA",
     "photo": "/uploads/karim.jpg"
   },
   {
-    "id": 3,
+    "id": 6,
     "name": "Sergey Eroshenkov",
     "position": "FrontEnd Developer",
     "location": "Smolensk, Russia",

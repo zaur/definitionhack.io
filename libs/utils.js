@@ -13,3 +13,7 @@ export const validateUrl = str => {
   )
   return !!pattern.test(str)
 }
+
+export const findRandom = max => {
+  return Math.floor(Math.random() * max)
+}
