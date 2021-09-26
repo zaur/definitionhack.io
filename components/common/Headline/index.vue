@@ -3,6 +3,7 @@
     <div class='h-container wrapper'>
       <Logo :brand-color='logoColor' :text-color='logoColor' />
       <Navigation :color='logoColor' />
+      <ui-button v-if='!isLoggedIn' :to='{ name: "login" }' outlined>Login</ui-button>
       <Burger />
     </div>
   </header>
@@ -24,7 +25,7 @@ export default {
   },
 
   computed: {
-    ...mapState('app', ['fixedHeader', 'invertedHeader', 'hiddenHeader']),
+    ...mapState('app', ['fixedHeader', 'invertedHeader', 'hiddenHeader', 'isLoggedIn']),
 
     logoColor () {
       if (!this.invertedHeader) { return undefined }

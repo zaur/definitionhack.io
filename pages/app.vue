@@ -1,6 +1,9 @@
 <template>
   <main v-if='content' class='h-section'>
-    <div class='h-container'>
+    <div v-if='!isLoggedIn' class='h-container login'>
+      <ui-button :to='{ name: "login" }' outlined>Login</ui-button>
+    </div>
+    <div v-else class='h-container'>
       <h1>Your NFT</h1>
       <div v-html='content.content' />
       <section class='app'>
@@ -55,6 +58,7 @@ export default {
 
   computed: {
     ...mapState('nft', ['nft', 'total']),
+    ...mapState('app', ['isLoggedIn']),
 
     percent () {
       if (!this.nft?.length || !this.total) { return 0 }
@@ -80,6 +84,10 @@ export default {
 
 <style lang='scss' scoped>
 @import "~@/styles/system.scss";
+
+.login {
+  text-align: center;
+}
 
 h1 {
   margin: 0 0 40px;

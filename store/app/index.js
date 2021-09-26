@@ -7,6 +7,7 @@ const state = () => ({
   fixedHeader: true,
   hiddenHeader: true,
   invertedHeader: false,
+  isLoggedIn: false,
 });
 
 const getters = {};
@@ -31,6 +32,10 @@ const actions = {
   changeHeaderInversion ({ commit }, inverted) {
     commit('changeHeaderInversion', inverted);
   },
+
+  login ({ commit }) {
+    commit('setLogin', true)
+  },
 };
 
 const mutations = {
@@ -53,6 +58,10 @@ const mutations = {
 
   changeHeaderInversion (state, payload) {
     state.invertedHeader = payload;
+  },
+
+  setLogin (state, playground) {
+    state.isLoggedIn = playground
   },
 };
 
