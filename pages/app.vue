@@ -15,7 +15,13 @@
           </div>
 
           <div class='history'>
-            <h3>Your NFT's:</h3>
+            <div class='history-header'>
+              <h3>NFT's:</h3>
+              <input v-model='NFTNumber' type='number' />
+              <ui-button :disable='!NFTNumber' type='primary' outlined @click='addSector'>
+                Add
+              </ui-button>
+            </div>
             <div class='history-list'>
               <ul>
                 <li v-for='item in nft' :key='item.id'>
@@ -23,11 +29,6 @@
                   <time>{{ $luxon.fromMillis(item.timestamp).toFormat('D tt') }}</time>
                 </li>
               </ul>
-            </div>
-            <div class='add'>
-              <ui-button type='primary' outlined>
-                Add new
-              </ui-button>
             </div>
           </div>
         </div>
@@ -39,6 +40,8 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import { TileDocument } from '@ceramicnetwork/stream-tile'
+import Ceramic from '@ceramicnetwork/http-client'
 import { findRandom } from '@/libs/utils'
 import Drawer from '@/components/shared/Drawer'
 import pages from '@/mixins/pages'
@@ -54,6 +57,7 @@ export default {
 
   data: () => ({
     history: [],
+    NFTNumber: null,
   }),
 
   computed: {
@@ -77,7 +81,26 @@ export default {
   },
 
   methods: {
-    ...mapActions('nft', ['fetchNft'])
+    ...mapActions('nft', ['fetchNft']),
+
+    async addSector () {
+      console.log('addSector', this.NFTNumber)
+      const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
+      ceramic.did = window.did
+
+      const didNFT =
+        "did:nft:eip155:4_erc721:0xd132f6597e2b16e43f1a5ccd4956568a14e36cc5_" + this.NFTNumber;
+      try {
+        const tile = await TileDocument.create(ceramic, null, {controllers: [didNFT], deterministic: true})
+        await tile.update({
+          "user": window.did,
+          "timestamp": Date.now()
+        }, {controllers: [didNFT]})
+        console.log('####', tile)
+      } catch (error) {
+        console.error('ERROR===>', error)
+      }
+    },
   },
 }
 </script>
@@ -110,16 +133,32 @@ h1 {
 }
 
 h3 {
-  margin: 0 0 4px;
+  margin: 0;
   font-weight: 500;
 }
 
 .history {
   margin: 40px 0 0;
 
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 4px;
+
+    input {
+      flex: 1;
+      height: 44px;
+      padding: 0 8px;
+      border: 2px solid clr(border);
+      border-radius: 8px;
+    }
+  }
+
   &-list {
     overflow-y: auto;
-    max-height: 100px;
+    max-height: 300px;
     background: clr(accent);
   }
 
