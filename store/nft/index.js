@@ -8,7 +8,7 @@ const updateNFTList = (data) => {
   const list = []
   for (let i = 0; i <= number; i++) {
     const item = data.list[findRandom(data.list.length - 1)]
-    list.push({...item, id: i + 1, number: findRandom(218) + 1})
+    list.push({...item, nft_token_id: i + 1, number: findRandom(218) + 1})
   }
   return {
     ...data,
@@ -24,10 +24,16 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  fetchNFTs ({ commit }) {
-    const newList = updateNFTList(data)
-    commit('setNftList', newList)
-    // commit('setNftList', data)
+  fetchNFTs ({ commit }, list) {
+    if (!list?.length) {
+      const newList = updateNFTList(data)
+      commit('setNftList', newList)
+      return
+    }
+    commit('setNftList', {
+      list,
+      total: list.length,
+    })
   },
 };
 

@@ -10,7 +10,7 @@
         <div class='info'>
           <div class='info__stat'>
             <h3 @click='fetchNFTs()'>Completed by {{ percent }}%</h3>
-            <div>({{ NFTCount }} from {{ total }})</div>
+            <div>({{ NFTCount }} from {{ pointsTotal }})</div>
             <UiPieChart class='chart' :percent='percent' />
           </div>
 
@@ -24,15 +24,15 @@
             </div>
             <div class='history-list'>
               <ul>
-                <li v-for='item in nft' :key='item.id'>
-                  <b>#{{ item.number }}</b>
+                <li v-for='item in nft' :key='item.nft_token_id'>
+                  <b>#{{ item.nft_token_id }}</b>
                   <time>{{ $luxon.fromMillis(item.timestamp).toFormat('D tt') }}</time>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <Drawer :quantity='NFTCount' />
+        <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
     </div>
   </main>
@@ -58,6 +58,7 @@ export default {
   data: () => ({
     history: [],
     NFTNumber: null,
+    pointsTotal: 218,
   }),
 
   computed: {
@@ -65,19 +66,19 @@ export default {
     ...mapState('app', ['isLoggedIn']),
 
     percent () {
-      if (!this.nft?.length || !this.total) { return 0 }
-      // return ((this.NFTCount / this.total) * 100).toFixed(2)
-      return ((this.nft.length / this.total) * 100).toFixed(2)
+      if (!this.nft?.length || !this.pointsTotal) { return 0 }
+      // return ((this.NFTCount / this.pointsTotal) * 100).toFixed(2)
+      return ((this.nft.length / this.pointsTotal) * 100).toFixed(2)
     },
 
     NFTCount () {
-      if (!this.nft?.length || !this.total) { return 0 }
+      if (!this.nft?.length || !this.pointsTotal) { return 0 }
       return this.nft.length
     }
   },
 
   mounted () {
-    this.fetchNFTs()
+    this.updateList()
   },
 
   methods: {
@@ -125,18 +126,32 @@ export default {
           userStreamContent,
           {controllers: [window.did._id]}
         )
+        console.log('####', newNftRecord)
         const userStreamCommits = await ceramic.loadStreamCommits(window.userStreamDoc.id)
         console.log('USER_STREAM_COMMITS', userStreamCommits)
 
         window.userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
         console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
         this.NFTNumber = null
-        this.fetchNFTs()
+        this.fetchNFTs(window.userStreamDoc.content.nftRecords)
         // todo update drawing state by window.userStreamDoc.content.nftRecords
       } catch (error) {
         console.error('ERROR', error)
       }
     },
+
+    async updateList () {
+      try {
+        const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
+
+        window.userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+        console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
+        this.NFTNumber = null
+        this.fetchNFTs(window.userStreamDoc.content.nftRecords)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   },
 }
 </script>
