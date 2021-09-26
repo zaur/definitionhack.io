@@ -4,13 +4,14 @@
       <Logo :brand-color='logoColor' :text-color='logoColor' />
       <Navigation :color='logoColor' />
       <ui-button v-if='!isLoggedIn' :to='{ name: "login" }' outlined>Login</ui-button>
+      <ui-button v-else outlined @click='logout'>Logout</ui-button>
       <Burger />
     </div>
   </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import Logo from '@/components/shared/Logo'
 import Navigation from '@/components/common/Headline/Navigation'
 import Burger from '@/components/common/Headline/Burger'
@@ -38,6 +39,14 @@ export default {
         // hidden: this.hiddenHeader,
       }
     },
+  },
+
+  mounted () {
+    this.checkLogin()
+  },
+
+  methods: {
+    ...mapActions('app', ['checkLogin', 'logout']),
   },
 }
 </script>

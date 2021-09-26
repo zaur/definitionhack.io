@@ -101,12 +101,7 @@ export default {
 .actions {
   margin: 50px 0 0;
 }
-.logo {
-  height: 125px;
-  width: 125px;
-  margin-right: auto;
-  margin-left: auto;
-}
+
 .hide {
   display: none;
   padding: 0;

@@ -33,9 +33,24 @@ const actions = {
     commit('changeHeaderInversion', inverted);
   },
 
+  checkLogin ({ commit }) {
+    const status = localStorage.getItem('isLoggedIn');
+    if (status === 'true') {
+      commit('setLogin', true)
+    }
+  },
+
   login ({ commit }) {
     commit('setLogin', true)
+    const localStorage = window.localStorage
+    localStorage.setItem('isLoggedIn', 'true');
   },
+
+  logout ({ commit }) {
+    commit('setLogin', false)
+    const localStorage = window.localStorage
+    localStorage.removeItem('isLoggedIn');
+  }
 };
 
 const mutations = {
