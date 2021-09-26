@@ -4,9 +4,9 @@
       <div class="container">
         <header>
           <div class="row">
-            <div class="col-xs-12 alert hide" role="alert" id="alerts"></div>
+            <div id="alerts" class="col-xs-12 alert hide" role="alert"></div>
             <div class="col-xs-offset-10 col-xs-2">
-              <span class="badge rounded-pill bg-secondary" id="userDID">Not Connected</span>
+              <span id="userDID" class="badge rounded-pill bg-secondary">Not Connected</span>
             </div>
           </div>
         </header>
@@ -14,17 +14,17 @@
           <div class="row">
             <div class="col-xs-12 col-lg-6">
               <iframe
+                id="ceramic_docs"
                 class="documentation"
                 src="https://developers.ceramic.network/build/javascript/quick-start/"
-                id="ceramic_docs"
               >
               </iframe>
             </div>
             <div class="col-xs-12 col-lg-6 text-right">
               <iframe
+                id="idx_docs"
                 class="documentation"
                 src="https://developers.idx.xyz/build/quick-start/"
-                id="idx_docs"
               ></iframe>
             </div>
           </div>
