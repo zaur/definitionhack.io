@@ -115,6 +115,7 @@ export default {
           userStreamContent = window.userStreamDoc.content
         }
         const newNftRecord = {
+          "nft_token_id": this.NFTNumber,
           "nft_stream_id": tile.id.toString(),
           "commit_id": lastCommitId,
           "timestamp": Date.now()
