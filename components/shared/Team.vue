@@ -12,9 +12,17 @@
             :alt='member.name'
           >
         </div>
-        <span slot='footer' class='location'>
-          {{ member.location }}
-        </span>
+        <template #footer>
+          <div v-if='member.twitter' class='twitter'>
+            <a class='twitter-link' :href='"https://twitter.com/" + member.twitter' target='_blank'>
+              <img src='~/assets/icons/twitter.svg' alt=''>
+              @{{ member.twitter }}
+            </a>
+          </div>
+          <div class='location'>
+            {{ member.location }}
+          </div>
+        </template>
       </ui-card>
     </li>
   </ul>
@@ -86,6 +94,21 @@ li {
   img {
     width: 24px;
     height: 24px;
+  }
+}
+
+.twitter {
+  &-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1d9bf0;
+    text-decoration: none;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
   }
 }
 </style>

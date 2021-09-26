@@ -2,21 +2,23 @@
   {
     "id": 1,
     "name": "Zaur Agamov",
-    "position": "Python Developer",
+    "position": "Product Manager",
     "location": "Makhachkala, Russia",
-    "photo": "/uploads/zaur.jpg"
+    "photo": "/uploads/zaur.jpg",
+    "twitter": "agamov"
   },
   {
     "id": 2,
     "name": "Maxim Sultakov",
-    "position": "Android Developer",
+    "position": "Maxim Sultakov",
     "location": "St. Petersburg, Russia",
-    "photo": "/uploads/maxim.jpg"
+    "photo": "/uploads/maxim.jpg",
+    "twitter": "sultakov"
   },
   {
     "id": 3,
     "name": "Ilya Belkin",
-    "position": "Android Developer",
+    "position": "Backend Developer",
     "location": "St. Petersburg, Russia",
     "photo": "/uploads/ilya.jpg"
   },
@@ -25,7 +27,8 @@
     "name": "Alexey Kalmykov",
     "position": "Software developer",
     "location": "St. Petersburg, Russia",
-    "photo": "/uploads/alexey.jpg"
+    "photo": "/uploads/alexey.jpg",
+    "twitter": "akalmykov"
   },
   {
     "id": 5,
@@ -39,6 +42,7 @@
     "name": "Sergey Eroshenkov",
     "position": "FrontEnd Developer",
     "location": "Smolensk, Russia",
-    "photo": "/uploads/sergey.jpg"
+    "photo": "/uploads/sergey.jpg",
+    "twitter": "techmeat"
   }
 ]

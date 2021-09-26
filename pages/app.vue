@@ -9,8 +9,8 @@
       <section class='app'>
         <div class='info'>
           <div class='info__stat'>
-            <h3>Completed by {{ percent }}%</h3>
-            <div>({{ randomNumber }} from {{ total }})</div>
+            <h3 @click='fetchNFTs()'>Completed by {{ percent }}%</h3>
+            <div>({{ NFTCount }} from {{ total }})</div>
             <UiPieChart class='chart' :percent='percent' />
           </div>
 
@@ -18,7 +18,7 @@
             <div class='history-header'>
               <h3>NFT's:</h3>
               <input v-model='NFTNumber' type='number' />
-              <ui-button :disable='!NFTNumber' type='primary' outlined @click='addSector'>
+              <ui-button :disabled='!NFTNumber' type='primary' :outlined='!!NFTNumber' @click='addSector'>
                 Add
               </ui-button>
             </div>
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <Drawer :quantity='randomNumber' />
+        <Drawer :quantity='NFTCount' />
       </section>
     </div>
   </main>
@@ -42,7 +42,7 @@
 import { mapActions, mapState } from 'vuex'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 import Ceramic from '@ceramicnetwork/http-client'
-import { findRandom } from '@/libs/utils'
+// import { findRandom } from '@/libs/utils'
 import Drawer from '@/components/shared/Drawer'
 import pages from '@/mixins/pages'
 
@@ -66,22 +66,22 @@ export default {
 
     percent () {
       if (!this.nft?.length || !this.total) { return 0 }
-      return ((this.randomNumber / this.total) * 100).toFixed(2)
-      // return ((this.nft.length / this.total) * 100).toFixed(2)
+      // return ((this.NFTCount / this.total) * 100).toFixed(2)
+      return ((this.nft.length / this.total) * 100).toFixed(2)
     },
 
-    randomNumber () {
+    NFTCount () {
       if (!this.nft?.length || !this.total) { return 0 }
-      return findRandom(this.total)
+      return this.nft.length
     }
   },
 
   mounted () {
-    this.fetchNft()
+    this.fetchNFTs()
   },
 
   methods: {
-    ...mapActions('nft', ['fetchNft']),
+    ...mapActions('nft', ['fetchNFTs']),
 
     async addSector () {
       console.log('addSector', this.NFTNumber)
@@ -97,8 +97,10 @@ export default {
           "timestamp": Date.now()
         }, {controllers: [didNFT]})
         console.log('####', tile)
+        this.NFTNumber = null
+        this.fetchNFTs()
       } catch (error) {
-        console.error('ERROR===>', error)
+        console.error(error)
       }
     },
   },
