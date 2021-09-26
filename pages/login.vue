@@ -101,10 +101,6 @@ export default {
 .actions {
   margin: 50px 0 0;
 }
-
-main {
-  max-width: 600px;
-}
 .logo {
   height: 125px;
   width: 125px;
@@ -165,9 +161,6 @@ main {
   background-color: #6535ff !important;
   color: white !important;
 }
-ul {
-  padding-left: 20px;
-}
 .documentation {
   resize: both;
   overflow: auto;
@@ -176,5 +169,4 @@ ul {
   border: 1px solid transparent;
   display: none;
 }
-
 </style>
