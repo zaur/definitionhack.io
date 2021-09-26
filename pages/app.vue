@@ -143,11 +143,12 @@ export default {
     async updateList () {
       try {
         const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
-
-        window.userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
-        console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
-        this.NFTNumber = null
-        this.fetchNFTs(window.userStreamDoc.content.nftRecords)
+        if (window.userStreamDoc) {
+          const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+          console.log('USER_STREAM_DOC', userStreamDoc.content.nftRecords)
+          this.NFTNumber = null
+          this.fetchNFTs(userStreamDoc.content.nftRecords)
+        }
       } catch (error) {
         console.error(error)
       }
