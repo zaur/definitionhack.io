@@ -24,7 +24,7 @@
             </div>
             <div class='history-list'>
               <ul>
-                <li v-for='item in nft' :key='item.nft_token_id'>
+                <li v-for='(item, index) in nft' :key='index'>
                   <b>#{{ item.nft_token_id }}</b>
                   <time>{{ $luxon.fromMillis(item.timestamp).toFormat('D tt') }}</time>
                 </li>
