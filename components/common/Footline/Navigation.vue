@@ -104,7 +104,7 @@ nav {
 h3 {
   @include title(base, 500, base);
 
-  margin: 0 0 30px;
+  margin: 0 0 var(--gap-double);
 }
 
 ul {

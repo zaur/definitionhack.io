@@ -26,7 +26,7 @@ export default {
 
 footer {
   flex: 0 0 auto;
-  padding: 50px 0;
+  padding: var(--gap-max) 0;
   background: clr(accent);
   color: clr(text);
   font-size: var(--font-size-tiny);

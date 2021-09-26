@@ -35,7 +35,7 @@ $block: ".ui-nft";
   justify-content: center;
   width: 228px;
   height: 276px;
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: clr(light);
   color: clr(text);
 

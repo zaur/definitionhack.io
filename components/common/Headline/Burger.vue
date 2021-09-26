@@ -39,6 +39,8 @@ export default {
 @import "~@/styles/system.scss";
 
 .burger {
+  --burger-size: 20px;
+
 	display: none;
 
 	@include display-less(desktop) {
@@ -56,8 +58,8 @@ export default {
 
 		&__icon {
 			position: relative;
-			width: 20px;
-			height: 20px;
+			width: var(--burger-size);
+			height: var(--burger-size);
       border-radius: 50%;
       background: clr(light);
 		}
@@ -67,8 +69,8 @@ export default {
 		&__icon::after {
 			content: '';
 			position: absolute;
-			left: 5px;
-			width: 10px;
+			left: calc(var(--burger-size) / 4);
+			width: calc(var(--burger-size) / 2);
 			height: 2px;
 			border-radius: 2px;
 			background: clr(dark);
@@ -77,11 +79,11 @@ export default {
 
 		&__line {
 			&:first-child {
-				top: 5px;
+				top: calc(var(--burger-size) / 4);
 			}
 
 			&:last-child {
-				bottom: 5px;
+				bottom: calc(var(--burger-size) / 4);
 			}
 
 			.page-nav-open & {
@@ -108,10 +110,10 @@ export default {
 
   &__label {
     overflow: hidden;
-    height: 20px;
+    height: var(--burger-size);
     margin: 0 0 0 8px;
     font-size: 14px;
-    line-height: 20px;
+    line-height: var(--burger-size);
     color: clr(text);
 
     .page-nav-open & {

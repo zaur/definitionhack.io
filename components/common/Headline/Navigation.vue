@@ -168,7 +168,7 @@ a {
   height: 56px;
   margin: 0;
   padding: 0 var(--gap);
-  border-radius: 12px;
+  border-radius: var(--radius);
   color: clr(text);
   text-decoration: none;
   transition: background-color .25s;
@@ -188,7 +188,7 @@ a {
 
   @include display-less(desktop) {
     padding: 0 var(--gap);
-    border-radius: 12px;
+    border-radius: var(--radius);
   }
 }
 

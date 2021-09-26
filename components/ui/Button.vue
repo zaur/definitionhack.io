@@ -146,7 +146,7 @@ $block: ".ui-button";
 
   &--big {
     height: var(--button-size-big);
-    padding: 0 50px;
+    padding: 0 var(--gap-max);
   }
 
   &--reversed {

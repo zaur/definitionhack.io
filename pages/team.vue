@@ -25,7 +25,7 @@ export default {
 
 <style lang='scss' scoped>
 h1 {
-  margin: 0 0 50px;
+  margin: 0 0 var(--gap-max);
   text-align: center;
 }
 </style>

@@ -168,7 +168,7 @@ h1 {
 .app {
   display: grid;
   grid-template-columns: 1fr 600px;
-  gap: 50px;
+  gap: var(--gap-max);
 
   @include display-less(desktop) {
     grid-template-columns: 1fr;

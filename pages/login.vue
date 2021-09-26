@@ -108,7 +108,7 @@ export default {
 }
 
 .actions {
-  margin: 50px 0 0;
+  margin: var(--gap-max) 0 0;
 }
 
 .hide {

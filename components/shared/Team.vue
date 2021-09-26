@@ -46,14 +46,17 @@ export default {
 ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  gap: var(--gap-max);
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
 
+  @include display-less(desktop) {
+    gap: var(--gap);
+  }
+
   @include display-less(tablet) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
 
   @include display-less(smart) {
@@ -68,7 +71,7 @@ li {
 .photo {
   width: 134px;
   height: 134px;
-  margin: 0 auto 30px;
+  margin: 0 auto var(--gap-double);
   border-radius: 50%;
   background: clr(accent);
   text-align: center;
