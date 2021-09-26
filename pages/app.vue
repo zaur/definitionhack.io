@@ -48,9 +48,11 @@
 import { mapActions, mapState } from 'vuex'
 import { TileDocument } from '@ceramicnetwork/stream-tile'
 import Ceramic from '@ceramicnetwork/http-client'
-// import { findRandom } from '@/libs/utils'
 import Drawer from '@/components/shared/Drawer'
 import pages from '@/mixins/pages'
+
+const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
+
 
 export default {
   name: 'AppPage',
@@ -74,7 +76,6 @@ export default {
 
     percent () {
       if (!this.nft?.length || !this.pointsTotal) { return 0 }
-      // return ((this.NFTCount / this.pointsTotal) * 100).toFixed(2)
       return ((this.nft.length / this.pointsTotal) * 100).toFixed(2)
     },
 
@@ -93,29 +94,24 @@ export default {
 
     async addSector () {
       this.isDataLoading = true
-      console.log('addSector', this.NFTNumber)
-      const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
       ceramic.did = window.did
 
       const didNFT =
-        "did:nft:eip155:4_erc721:0xd132f6597e2b16e43f1a5ccd4956568a14e36cc5_" + this.NFTNumber;
+        `did:nft:eip155:4_erc721:0xd132f6597e2b16e43f1a5ccd4956568a14e36cc5_${this.NFTNumber}`;
 
       try {
-        const tile = await TileDocument.create(ceramic, null, {controllers: [didNFT], deterministic: true})
-        console.log('STREAM_ID', tile.id.toString())
-        console.log('USER_STREAM_ID', window.userStreamDoc.id.toString())
-        console.log('USER_DID', window.did._id)
-        console.log('NFT_DID', didNFT)
+        const tile = await TileDocument.create(
+          ceramic,
+          null,
+          {controllers: [didNFT], deterministic: true}
+        )
         await tile.update({
           "user": window.did._id,
           "timestamp": Date.now()
         }, {controllers: [didNFT]})
-        console.log('UPDATED', 'updated tile')
 
         const commits = await ceramic.loadStreamCommits(tile.id)
-        console.log('NFT_COMMITS', commits)
         const lastCommitId = commits[commits.length - 1].cid
-        console.log('LAST_COMMIT', lastCommitId)
 
         let userStreamContent
         if (!window.userStreamDoc?.content?.nftRecords) {
@@ -134,14 +130,7 @@ export default {
           userStreamContent,
           {controllers: [window.did._id]}
         )
-        console.log('####', newNftRecord)
-        const userStreamCommits = await ceramic.loadStreamCommits(window.userStreamDoc.id)
-        console.log('USER_STREAM_COMMITS', userStreamCommits)
-
-        window.userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
-        console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
-        this.NFTNumber = null
-        this.fetchNFTs(window.userStreamDoc.content.nftRecords)
+        await this.updateList()
         this.isDataLoading = false
         // todo update drawing state by window.userStreamDoc.content.nftRecords
       } catch (error) {
@@ -151,10 +140,8 @@ export default {
 
     async updateList () {
       try {
-        const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
         if (window.userStreamDoc) {
           const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
-          console.log('USER_STREAM_DOC', userStreamDoc.content.nftRecords)
           this.NFTNumber = null
           this.fetchNFTs(userStreamDoc.content.nftRecords)
         }

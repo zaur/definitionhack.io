@@ -95,7 +95,6 @@ export default {
         deterministic: true,
       });
       window.userStreamDoc = tileDocument;
-      console.log('DID:', window.did)
       return tileDocument.stream
     }
   },

@@ -31,6 +31,7 @@ const actions = {
       return
     }
     const ids = list.map(item => item.nft_token_id).filter(Boolean)
+    if (!ids?.length) { return }
     const set = new Set(ids)
     const result = []
     set.forEach(id => {
