@@ -22,8 +22,6 @@
   --font-size-large: 64px;
 
   @include display-less(desktop) {
-    --header-size: calc(42px + var(--gap));
-    --header-size-collapsed: calc(42px + var(--gap));
     --font-size-base: 14px;
     --font-size-small: 13px;
     --font-size-tiny: 12px;

@@ -3,21 +3,21 @@ line {
 }
 
 circle {
-    stroke: blue;
+    stroke: #0059ff;
 }
 
 polyline {
-    stroke: red;
+    stroke: #ff3600;
     stroke-width: 1;
     fill-opacity: 0;
 }
 
 .stop {
-    fill: red;
+    fill: #ff3600;
 }
 
 .centrePoint {
-    fill: red;
+    fill: #ff3600;
 }
 
 .bigCircle {
@@ -25,7 +25,7 @@ polyline {
 }
 
 .endCircle {
-    fill: yellow;
+    fill: #ffba06;
 }
 
 .traceLine {

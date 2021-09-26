@@ -27,15 +27,8 @@
               </ui-button>
             </div>
           </div>
-
-          <div class='settings'>
-            <h3>Settings:</h3>
-            <div>
-              <input v-model='accuracy' type='range' min='1' max='256' style='width: 100%'>
-            </div>
-          </div>
         </div>
-        <Drawer :accuracy='accuracy' />
+        <Drawer :quantity='randomNumber' />
       </section>
     </div>
   </main>
@@ -58,7 +51,6 @@ export default {
 
   data: () => ({
     history: [],
-    accuracy: 2,
   }),
 
   computed: {
@@ -96,8 +88,13 @@ h1 {
 
 .app {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 1fr 600px;
   gap: 50px;
+
+  @include display-less(desktop) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 .chart {
