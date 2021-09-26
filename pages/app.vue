@@ -18,7 +18,13 @@
             <div class='history-header'>
               <h3>NFT's:</h3>
               <input v-model='NFTNumber' type='number' />
-              <ui-button :disabled='!NFTNumber' type='primary' :outlined='!!NFTNumber' @click='addSector'>
+              <ui-button
+                :disabled='!NFTNumber || isDataLoading'
+                :outlined='!!NFTNumber || isDataLoading'
+                type='primary'
+                @click='addSector'
+              >
+                <UiSpinner v-if='isDataLoading' slot='before' :size='24' />
                 Add
               </ui-button>
             </div>
@@ -59,6 +65,7 @@ export default {
     history: [],
     NFTNumber: null,
     pointsTotal: 218,
+    isDataLoading: false,
   }),
 
   computed: {
@@ -85,6 +92,7 @@ export default {
     ...mapActions('nft', ['fetchNFTs']),
 
     async addSector () {
+      this.isDataLoading = true
       console.log('addSector', this.NFTNumber)
       const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
       ceramic.did = window.did
@@ -134,6 +142,7 @@ export default {
         console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
         this.NFTNumber = null
         this.fetchNFTs(window.userStreamDoc.content.nftRecords)
+        this.isDataLoading = false
         // todo update drawing state by window.userStreamDoc.content.nftRecords
       } catch (error) {
         console.error('ERROR', error)
