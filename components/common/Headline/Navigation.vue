@@ -52,6 +52,10 @@ export default {
         label: 'Team',
         to: { name: 'team' }
       },
+      {
+        label: 'Slides',
+        href: 'ceramify.pdf',
+      },
     ],
     underline: true,
   }),
