@@ -90,15 +90,49 @@ export default {
 
       const didNFT =
         "did:nft:eip155:4_erc721:0xd132f6597e2b16e43f1a5ccd4956568a14e36cc5_" + this.NFTNumber;
+
       try {
         const tile = await TileDocument.create(ceramic, null, {controllers: [didNFT], deterministic: true})
+        console.log('STREAM_ID', tile.id.toString())
+        console.log('USER_STREAM_ID', window.userStreamDoc.id.toString())
+        console.log('USER_DID', window.did._id)
+        console.log('NFT_DID', didNFT)
         await tile.update({
-          "user": window.did,
+          "user": window.did._id,
           "timestamp": Date.now()
         }, {controllers: [didNFT]})
-        console.log('####', tile)
+        console.log('UPDATED', 'updated tile')
+
+        const commits = await ceramic.loadStreamCommits(tile.id)
+        console.log('NFT_COMMITS', commits)
+        const lastCommitId = commits[commits.length - 1].cid
+        console.log('LAST_COMMIT', lastCommitId)
+
+        let userStreamContent
+        if (!window.userStreamDoc?.content?.nftRecords) {
+          userStreamContent = {nftRecords: []}
+        } else {
+          userStreamContent = window.userStreamDoc.content
+        }
+        const newNftRecord = {
+          "nft_stream_id": tile.id.toString(),
+          "commit_id": lastCommitId,
+          "timestamp": Date.now()
+        }
+        userStreamContent.nftRecords.push(newNftRecord)
+        await window.userStreamDoc.update(
+          userStreamContent,
+          {controllers: [window.did._id]}
+        )
+        const userStreamCommits = await ceramic.loadStreamCommits(window.userStreamDoc.id)
+        console.log('USER_STREAM_COMMITS', userStreamCommits)
+
+        window.userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+        console.log('USER_STREAM_DOC', window.userStreamDoc.content.nftRecords)
+
+        // todo update drawing state by window.userStreamDoc.content.nftRecords
       } catch (error) {
-        console.error('ERROR===>', error)
+        console.error('ERROR', error)
       }
     },
   },
