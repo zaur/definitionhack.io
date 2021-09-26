@@ -30,8 +30,14 @@ const actions = {
       commit('setNftList', newList)
       return
     }
+    const ids = list.map(item => item.nft_token_id).filter(Boolean)
+    const set = new Set(ids)
+    const result = []
+    set.forEach(id => {
+      result.push(list.find(token => token.nft_token_id === id))
+    })
     commit('setNftList', {
-      list,
+      list: result,
       total: list.length,
     })
   },
