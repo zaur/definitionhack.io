@@ -37,9 +37,9 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 // import { TileDocument } from '@ceramicnetwork/stream-tile'
-// import Ceramic from '@ceramicnetwork/http-client'
+import Ceramic from '@ceramicnetwork/http-client'
 
-// const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
+const ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
 
 export default {
   props: {
@@ -123,19 +123,19 @@ export default {
     },
 
     async updateList () {
-      // if (!this.isDemo) {
-      //   try {
-      //     if (window.userStreamDoc) {
-      //       const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
-      //       this.NFTNumber = null
-      //       this.fetchNFTs(userStreamDoc.content.nftRecords)
-      //     }
-      //   } catch (error) {
-      //     console.error(error)
-      //   }
-      //   return
-      // }
-      // this.fetchNFTs()
+      if (!this.isDemo) {
+        try {
+          if (window.userStreamDoc) {
+            const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+            this.NFTNumber = null
+            this.fetchNFTs(userStreamDoc.content.nftRecords)
+          }
+        } catch (error) {
+          console.error(error)
+        }
+        return
+      }
+      this.fetchNFTs()
     }
   }
 };
