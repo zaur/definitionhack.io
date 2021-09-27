@@ -34,7 +34,9 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-// import { TileDocument } from '@ceramicnetwork/stream-tile'
+import { TileDocument } from '@ceramicnetwork/stream-tile'
+
+console.log('====>TileDocument', TileDocument)
 
 // let ceramic
 // if (process.client) {
