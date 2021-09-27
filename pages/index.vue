@@ -3,15 +3,17 @@
     <div class='h-container'>
       <h1>NFT 2.0: interaction, composition and generative art</h1>
       <div class='actions'>
-        <ui-button type='primary' @click='fetchNFTs()'>
+        <ui-button type='primary' @click='makeMagic'>
           Make a Magic
         </ui-button>
       </div>
 
-      <h2>Demo Art</h2>
-      <section class='app'>
-        <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
-      </section>
+      <template v-if='isMagic'>
+        <h2>Demo Art</h2>
+        <section class='app'>
+          <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
+        </section>
+      </template>
 
       <div class='description'>
         <h2>Technical Details</h2>
@@ -54,6 +56,7 @@ export default {
 
   data: () => ({
     pointsTotal: 218,
+    isMagic: false,
   }),
 
   computed: {
@@ -67,6 +70,11 @@ export default {
 
   methods: {
     ...mapActions('nft', ['fetchNFTs']),
+
+    makeMagic () {
+      this.isMagic = true
+      this.fetchNFTs()
+    }
   },
 };
 </script>

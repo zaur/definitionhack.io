@@ -8,11 +8,9 @@
         </ui-button>
       </div>
 
-      <h2>Demo Art</h2>
+      <h2 @click='loadInfoComponent'>Demo Art</h2>
       <section class='app'>
-        <client-only>
-          <Info is-demo />
-        </client-only>
+        <component :is="dynamic" v-if="dynamic" is-demo />
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
 
@@ -57,6 +55,7 @@ export default {
 
   data: () => ({
     pointsTotal: 218,
+    dynamic: null,
   }),
 
   computed: {
@@ -65,11 +64,15 @@ export default {
     NFTCount () {
       if (!this.nft?.length || !this.pointsTotal) { return 0 }
       return this.nft.length
-    }
+    },
   },
 
   methods: {
     ...mapActions('nft', ['fetchNFTs']),
+
+    loadInfoComponent () {
+      this.dynamic = () => import("@/components/shared/Info");
+    },
   },
 };
 </script>
