@@ -65,9 +65,11 @@ export default {
     },
   },
 
-  mounted () {
-    this.updateList()
-  },
+  // mounted () {
+  //   if (process.client) {
+  //     this.updateList()
+  //   }
+  // },
 
   methods: {
     ...mapActions('nft', ['fetchNFTs']),

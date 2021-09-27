@@ -10,6 +10,7 @@
 
       <h2>Demo Art</h2>
       <section class='app'>
+        <Info is-demo />
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
 
@@ -39,12 +40,14 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import pages from '@/mixins/pages'
+import Info from '@/components/shared/Info'
 import Drawer from '@/components/shared/Drawer'
 
 export default {
   name: 'HomePage',
 
   components: {
+    Info,
     Drawer,
   },
 
