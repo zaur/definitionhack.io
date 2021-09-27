@@ -66,9 +66,7 @@ export default {
   },
 
   mounted () {
-    if (process.client) {
-      this.updateList()
-    }
+    this.updateList()
   },
 
   methods: {
@@ -141,6 +139,18 @@ export default {
 
 <style lang='scss' scoped>
 @import "~@/styles/system.scss";
+
+.info {
+  &__stat {
+    @include display-less(desktop) {
+      text-align: center;
+    }
+  }
+
+  @include display-less(desktop) {
+    order: 2
+  }
+}
 
 .chart {
   margin: var(--gap) auto;
