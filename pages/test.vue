@@ -40,14 +40,12 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import pages from '@/mixins/pages'
-import Info from '@/components/shared/Info'
 import Drawer from '@/components/shared/Drawer'
 
 export default {
   name: 'HomePage',
 
   components: {
-    Info,
     Drawer,
   },
 
