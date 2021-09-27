@@ -120,17 +120,17 @@ export default {
       // }
     },
 
-    async updateList () {
+    updateList () {
       if (!this.isDemo) {
-        try {
-          if (window.userStreamDoc) {
-            const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
-            this.NFTNumber = null
-            this.fetchNFTs(userStreamDoc.content.nftRecords)
-          }
-        } catch (error) {
-          console.error(error)
-        }
+        // try {
+        //   if (window.userStreamDoc) {
+        //     const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+        //     this.NFTNumber = null
+        //     this.fetchNFTs(userStreamDoc.content.nftRecords)
+        //   }
+        // } catch (error) {
+        //   console.error(error)
+        // }
         return
       }
       this.fetchNFTs()
