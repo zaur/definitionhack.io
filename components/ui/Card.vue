@@ -38,10 +38,10 @@ $block: ".ui-card";
   justify-content: space-between;
   position: relative;
   padding: var(--gap);
-  border: 1px solid clr(border);
+  //border: 1px solid clr(border);
   border-radius: var(--radius);
-  background: clr(light);
-  color: clr(text-secondary);
+  background: clr(info);
+  color: clr(light);
   font-size: var(--font-size-small);
   font-weight: 500;
   text-align: center;
@@ -53,13 +53,12 @@ $block: ".ui-card";
   &__title {
     @include title(big, 600, 1.27);
 
-    margin: 0 0 10px;
-    color: clr(text);
+    margin: 0 0 4px;
   }
 
   &__content {
     flex: 1;
-    margin: var(--gap) 0;
+    margin: 4px 0 var(--gap);
   }
 }
 </style>

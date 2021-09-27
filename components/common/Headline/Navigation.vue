@@ -195,27 +195,4 @@ a {
     border-radius: var(--radius);
   }
 }
-
-$moving: cubic-bezier(0.6, 0.6, 0.4, 1.4);
-
-.underline {
-  position: absolute;
-  bottom: 0;
-  height: 4px;
-  border-radius: 2px;
-  background: clr(primary);
-  pointer-events: none;
-  transition:
-    left 0.25s $moving,
-    width 0.25s $moving;
-  will-change: left, width;
-
-  .nav--light & {
-    background: clr(light);
-  }
-
-  @include display-less(desktop) {
-    display: none;
-  }
-}
 </style>

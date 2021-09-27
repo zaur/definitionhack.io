@@ -12,15 +12,15 @@
             :alt='member.name'
           >
         </div>
+        <div class='location'>
+          {{ member.location }}
+        </div>
         <template #footer>
           <div v-if='member.twitter' class='twitter'>
             <a class='twitter-link' :href='"https://twitter.com/" + member.twitter' target='_blank'>
-              <img src='~/assets/icons/twitter.svg' alt=''>
+              <img src='~/assets/icons/twitter_white.svg' alt=''>
               @{{ member.twitter }}
             </a>
-          </div>
-          <div class='location'>
-            {{ member.location }}
           </div>
         </template>
       </ui-card>
@@ -69,8 +69,8 @@ li {
 }
 
 .photo {
-  width: 134px;
-  height: 134px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto var(--gap-double);
   border-radius: 50%;
   background: clr(accent);
@@ -105,7 +105,9 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1d9bf0;
+    gap: 4px;
+    //color: #1d9bf0;
+    color: inherit;
     text-decoration: none;
   }
 

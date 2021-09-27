@@ -20,18 +20,18 @@ $colors_theme : (
 $colors : (
   "light"          : #fff,
   "dark"           : #000619,
-  "gray"           : #26272e,
+  "gray"           : #262b2e,
   "primary"        : #ff3600,
   "secondary"      : #ffb08a,
   "background"     : #fff,
-  "warning"        : #ffba06,
-  "danger"         : #f50000,
-  "success"        : #30d238,
-  "info"           : #63e3ff,
-  "text"           : #171c34,
-  "text-secondary" : #747785,
-  "border" : #d1d2d6,
-  "accent"         : #f5f5f7,
+  "warning"        : #e0a30c,
+  "danger"         : #e14646,
+  "success"        : #26962b,
+  "info"           : #4ea7bb,
+  "text"           : #172534,
+  "text-secondary" : #7f8a8c,
+  "border"         : #aeb5b9,
+  "accent"         : #ebecec,
 );
 
 @mixin colors {

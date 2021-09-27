@@ -55,9 +55,9 @@ export default {
   line-height: 1.4;
 }
 
-.logo {
-  margin: 0 0 var(--gap-double);
-}
+//.logo {
+//  margin: 0 0 var(--gap-double);
+//}
 
 .text {
   color: clr(text-secondary);
