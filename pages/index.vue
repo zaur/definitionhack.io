@@ -10,7 +10,9 @@
 
       <h2>Demo Art</h2>
       <section class='app'>
-        <Info is-demo />
+        <client-only>
+          <Info is-demo />
+        </client-only>
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
 
