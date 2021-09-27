@@ -34,15 +34,14 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import { TileDocument } from '@ceramicnetwork/stream-tile'
+// import { TileDocument } from '@ceramicnetwork/stream-tile'
+import Ceramic from '@ceramicnetwork/http-client'
 
-console.log('====>TileDocument', TileDocument)
-
-// let ceramic
-// if (process.client) {
-//   ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
-//   console.log('@@@@@', ceramic)
-// }
+let ceramic
+if (process.client) {
+  ceramic = new Ceramic('https://ceramic-clay.3boxlabs.com')
+  console.log('@@@', ceramic)
+}
 
 export default {
   props: {
