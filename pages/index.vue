@@ -11,6 +11,7 @@
       <template v-if='isMagic'>
         <h2>Demo Art</h2>
         <section class='app'>
+          <component :is="dynamic" v-if="dynamic" is-demo />
           <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
         </section>
       </template>
@@ -41,20 +42,19 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import pages from '@/mixins/pages'
-// import Info from '@/components/shared/Info'
 import Drawer from '@/components/shared/Drawer'
 
 export default {
   name: 'HomePage',
 
   components: {
-    // Info,
     Drawer,
   },
 
   mixins: [pages],
 
   data: () => ({
+    dynamic: null,
     pointsTotal: 218,
     isMagic: false,
   }),
@@ -68,13 +68,21 @@ export default {
     }
   },
 
+  mounted () {
+    this.loadInfoComponent()
+  },
+
   methods: {
     ...mapActions('nft', ['fetchNFTs']),
+
+    loadInfoComponent () {
+      this.dynamic = () => import("@/components/shared/Info");
+    },
 
     makeMagic () {
       this.isMagic = true
       this.fetchNFTs()
-    }
+    },
   },
 };
 </script>
