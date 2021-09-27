@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Home",
+    "title": "Ceramify",
     "slug": "index",
-    "description": null,
+    "description": "NFT 2.0: interaction, composition and generative art",
     "contentTitle": "The Homepage",
     "content": null,
     "poster": null
@@ -12,7 +12,7 @@
     "id": 2,
     "title": "About",
     "slug": "about",
-    "description": null,
+    "description": "NFT 2.0: interaction, composition and generative art",
     "contentTitle": "About Us Page",
     "content": null,
     "poster": null
@@ -21,7 +21,7 @@
     "id": 3,
     "title": "App",
     "slug": "app",
-    "description": null,
+    "description": "NFT 2.0: interaction, composition and generative art",
     "contentTitle": "App page",
     "content": null,
     "poster": null
@@ -30,7 +30,7 @@
     "id": 4,
     "title": "Contact",
     "slug": "contact",
-    "description": null,
+    "description": "NFT 2.0: interaction, composition and generative art",
     "contentTitle": "Contact Us Page",
     "content": null,
     "poster": null
@@ -39,7 +39,7 @@
     "id": 8,
     "title": "Our Team",
     "slug": "team",
-    "description": null,
+    "description": "NFT 2.0: interaction, composition and generative art",
     "contentTitle": "Our Team Page",
     "content": null,
     "poster": null

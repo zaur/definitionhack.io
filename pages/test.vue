@@ -1,5 +1,5 @@
 <template>
-  <main v-if='content' class='h-section'>
+  <main class='h-section'>
     <div class='h-container'>
       <h1>NFT 2.0: interaction, composition and generative art</h1>
       <div class='actions'>
@@ -39,7 +39,6 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import pages from '@/mixins/pages'
 import Drawer from '@/components/shared/Drawer'
 
 export default {
@@ -48,8 +47,6 @@ export default {
   components: {
     Drawer,
   },
-
-  mixins: [pages],
 
   data: () => ({
     pointsTotal: 218,

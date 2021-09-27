@@ -1,8 +1,8 @@
 const siteUrl = 'https://ceramify.xyz';
 
 export default function getMeta (
-  title = 'Mint your photos into NFT\'s',
-  description = 'Mint and manage your NFT photos on the Blockchain',
+  title = 'NFT 2.0: interaction, composition and generative art',
+  description = 'NFT 2.0: interaction, composition and generative art',
   poster = siteUrl +'/images/poster.png',
   route = undefined,
 ) {
