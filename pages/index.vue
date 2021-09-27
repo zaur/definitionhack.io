@@ -11,7 +11,11 @@
       <h2>Demo Art</h2>
       <section class='app'>
         <client-only>
-          <Info is-demo />
+          <component
+            :is='infoComponent'
+            v-if='infoComponent'
+            is-demo
+          />
         </client-only>
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
@@ -57,6 +61,7 @@ export default {
 
   data: () => ({
     pointsTotal: 218,
+    infoComponent: null,
   }),
 
   computed: {
@@ -66,6 +71,10 @@ export default {
       if (!this.nft?.length || !this.pointsTotal) { return 0 }
       return this.nft.length
     }
+  },
+
+  mounted () {
+    this.infoComponent = 'Info'
   },
 
   methods: {
