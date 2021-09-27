@@ -4,7 +4,7 @@
       <h1>NFT 2.0: interaction, composition and generative art</h1>
       <div class='actions'>
         <ui-button type='primary' @click='fetchNFTs()'>
-          Make a Magic
+          Make Magic
         </ui-button>
       </div>
 
@@ -60,6 +60,10 @@ export default {
       if (!this.nft?.length || !this.pointsTotal) { return 0 }
       return this.nft.length
     },
+  },
+
+  mounted () {
+    this.loadInfoComponent()
   },
 
   methods: {

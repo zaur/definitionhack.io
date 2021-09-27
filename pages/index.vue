@@ -4,7 +4,7 @@
       <h1>NFT 2.0: interaction, composition and generative art</h1>
       <div class='actions'>
         <ui-button type='primary' @click='makeMagic'>
-          Make a Magic
+          Make Magic
         </ui-button>
       </div>
 
