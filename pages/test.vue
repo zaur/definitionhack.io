@@ -10,6 +10,9 @@
 
       <h2>Demo Art</h2>
       <section class='app'>
+        <client-only>
+          <Info is-demo />
+        </client-only>
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
 
@@ -39,14 +42,14 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import pages from '@/mixins/pages'
-// import Info from '@/components/shared/Info'
+import Info from '@/components/shared/Info'
 import Drawer from '@/components/shared/Drawer'
 
 export default {
   name: 'HomePage',
 
   components: {
-    // Info,
+    Info,
     Drawer,
   },
 
@@ -89,7 +92,14 @@ h2 {
 }
 
 .app {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 600px;
+  gap: var(--gap-max);
+
+  @include display-less(desktop) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 .description {
