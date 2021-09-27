@@ -1,34 +1,36 @@
 <template>
   <div class='info'>
-    <div class='info__stat'>
-      <h3>Completed by {{ percent }}%</h3>
-      <div>({{ NFTCount }} from {{ pointsTotal }})</div>
-      <UiPieChart class='chart' :percent='percent' />
-    </div>
+    <client-only>
+      <div class='info__stat'>
+        <h3>Completed by {{ percent }}%</h3>
+        <div>({{ NFTCount }} from {{ pointsTotal }})</div>
+        <UiPieChart class='chart' :percent='percent' />
+      </div>
 
-    <div class='history'>
-      <div v-if='!isDemo' class='history-header'>
-        <h3>NFT's:</h3>
-        <input v-model='NFTNumber' type='number' />
-        <ui-button
-          :disabled='!NFTNumber || isDataLoading'
-          :outlined='!!NFTNumber || isDataLoading'
-          type='primary'
-          @click='addSector'
-        >
-          <UiSpinner v-if='isDataLoading' slot='before' :size='24' />
-          Add
-        </ui-button>
+      <div class='history'>
+        <div v-if='!isDemo' class='history-header'>
+          <h3>NFT's:</h3>
+          <input v-model='NFTNumber' type='number' />
+          <ui-button
+            :disabled='!NFTNumber || isDataLoading'
+            :outlined='!!NFTNumber || isDataLoading'
+            type='primary'
+            @click='addSector'
+          >
+            <UiSpinner v-if='isDataLoading' slot='before' :size='24' />
+            Add
+          </ui-button>
+        </div>
+        <div class='history-list'>
+          <ul>
+            <li v-for='(item, index) in nft' :key='index'>
+              <b>#{{ item.nft_token_id }}</b>
+              <time>{{ $luxon.fromMillis(item.timestamp).toFormat('D tt') }}</time>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class='history-list'>
-        <ul>
-          <li v-for='(item, index) in nft' :key='index'>
-            <b>#{{ item.nft_token_id }}</b>
-            <time>{{ $luxon.fromMillis(item.timestamp).toFormat('D tt') }}</time>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </client-only>
   </div>
 </template>
 
