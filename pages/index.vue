@@ -70,6 +70,7 @@ export default {
 
   mounted () {
     this.loadInfoComponent()
+    this.makeMagic()
   },
 
   methods: {
@@ -105,7 +106,14 @@ h2 {
 }
 
 .app {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 600px;
+  gap: var(--gap-max);
+
+  @include display-less(desktop) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 .description {

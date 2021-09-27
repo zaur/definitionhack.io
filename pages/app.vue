@@ -7,7 +7,7 @@
       <h1>Your NFT</h1>
       <div v-html='content.content' />
       <section class='app'>
-        <Info />
+        <component :is="dynamic" v-if="dynamic" />
         <Drawer v-if='!!NFTCount' :quantity='NFTCount' />
       </section>
     </div>
@@ -20,7 +20,6 @@ import Info from '@/components/shared/Info'
 import Drawer from '@/components/shared/Drawer'
 import pages from '@/mixins/pages'
 
-
 export default {
   name: 'AppPage',
 
@@ -32,6 +31,7 @@ export default {
   mixins: [pages],
 
   data: () => ({
+    dynamic: null,
     pointsTotal: 218,
   }),
 
@@ -42,6 +42,16 @@ export default {
     NFTCount () {
       if (!this.nft?.length || !this.pointsTotal) { return 0 }
       return this.nft.length
+    },
+  },
+
+  mounted () {
+    this.loadInfoComponent()
+  },
+
+  methods: {
+    loadInfoComponent () {
+      this.dynamic = () => import("@/components/shared/Info");
     },
   },
 }
