@@ -76,14 +76,14 @@ export const FourierDiagram = function () {
   FourierDiagram.prototype.bbox = function () {
     var right = this.polyline[0].re;
     var left = right;
-    var upper = this.polyline[1].im;
+    var upper = this.polyline[1]?.im;
     var lower = upper;
 
     for (var i = 0; i < this.polyline.length; i++) {
       left = this.polyline[i].re < left ? this.polyline[i].re : left;
       right = this.polyline[i].re > right ? this.polyline[i].re : right;
-      upper = this.polyline[i].im > upper ? this.polyline[i].im : upper;
-      lower = this.polyline[i].im < lower ? this.polyline[i].im : lower;
+      upper = this.polyline[i]?.im > upper ? this.polyline[i]?.im : upper;
+      lower = this.polyline[i]?.im < lower ? this.polyline[i]?.im : lower;
     }
     var width = Math.abs (left - right);
     var height = Math.abs (upper - lower);
@@ -113,7 +113,7 @@ export const FourierDiagram = function () {
 
     for (var i = 0; i < this.transform.length; i++) {
       var x = this.transform[i].re / this.transform.length;
-      var y = this.transform[i].im / this.transform.length;
+      var y = this.transform[i]?.im / this.transform.length;
       var mag = Math.sqrt (x * x + y * y);
 
       var centre = document.createElementNS(this.NS, "circle");
@@ -175,7 +175,7 @@ export const FourierDiagram = function () {
 
     for (var i = 0; i < N; k++, i++) {
       var x = acc.re / N;
-      var y = acc.im / N;
+      var y = acc?.im / N;
 
       polyString += "" + x + "," + y + " ";
 
@@ -194,7 +194,7 @@ export const FourierDiagram = function () {
     }
 
     x = acc.re / N;
-    y = acc.im / N;
+    y = acc?.im / N;
 
     polyString += "" + x + "," + y;
     this.svgPolyLine.setAttribute ("points", polyString);

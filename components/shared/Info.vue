@@ -123,6 +123,7 @@ export default {
         try {
           if (window.userStreamDoc) {
             const userStreamDoc = await ceramic.loadStream(window.userStreamDoc.id)
+            console.log('userStreamDoc', userStreamDoc.content.nftRecords)
             this.NFTNumber = null
             this.fetchNFTs(userStreamDoc.content.nftRecords)
           }

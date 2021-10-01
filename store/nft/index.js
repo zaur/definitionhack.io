@@ -25,6 +25,7 @@ const getters = {};
 
 const actions = {
   fetchNFTs ({ commit }, list) {
+    console.log('fetchNFTs', list)
     if (!list?.length) {
       const newList = updateNFTList(data)
       commit('setNftList', newList)
